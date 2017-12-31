@@ -1,45 +1,31 @@
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLString, GraphQLID } = graphql;
-const mongoose = require('mongoose');
-const Song = mongoose.model('song');
-const Lyric = mongoose.model('lyric');
-const SongType = require('./song_type');
-const LyricType = require('./lyric_type');
+const axios = require('axios');
+
+const {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLInt} = graphql;
+const PlayerType = require('./player_type');
+const RoundType = require('./round_type');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    addSong: {
-      type: SongType,
+    addRound: {
+      type: RoundType,
       args: {
-        title: { type: GraphQLString }
+        id: {
+          type: new GraphQLNonNull(GraphQLInt)
+        },
+        score: {
+          type: new GraphQLNonNull(GraphQLInt)
+        },
+        level: {
+          type: new GraphQLNonNull(GraphQLString)
+        },
+        ranked: {
+          type: new GraphQLNonNull(GraphQLString)
+        }
       },
-      resolve(parentValue, { title }) {
-        return (new Song({ title })).save()
-      }
-    },
-    addLyricToSong: {
-      type: SongType,
-      args: {
-        content: { type: GraphQLString },
-        songId: { type: GraphQLID }
-      },
-      resolve(parentValue, { content, songId }) {
-        return Song.addLyric(songId, content);
-      }
-    },
-    likeLyric: {
-      type: LyricType,
-      args: { id: { type: GraphQLID } },
-      resolve(parentValue, { id }) {
-        return Lyric.like(id);
-      }
-    },
-    deleteSong: {
-      type: SongType,
-      args: { id: { type: GraphQLID } },
-      resolve(parentValue, { id }) {
-        return Song.remove({ _id: id });
+      resolve(parentValue, args) {
+        return axios.post(`https://obscure-brushlands-30729.herokuapp.com/rounds`, args).then(resp => resp.data[0]);
       }
     }
   }

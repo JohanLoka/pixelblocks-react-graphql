@@ -1,2 +1,3 @@
-# Lyrical-GraphQL
-Starter project from a GraphQL course on Udemy.com
+My website for handling the game pixelblocks.
+Website created using React.js, Node.js and GraphQL.
+Game created using Unity in C#.

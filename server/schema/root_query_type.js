@@ -1,35 +1,42 @@
-const mongoose = require('mongoose');
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLList, GraphQLID, GraphQLNonNull } = graphql;
-const SongType = require('./song_type');
-const LyricType = require('./lyric_type');
-const Lyric = mongoose.model('lyric');
-const Song = mongoose.model('song');
+const axios = require('axios');
+
+const {GraphQLObjectType,GraphQLList, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLInt} = graphql;
+const PlayerType = require('./player_type');
+const RoundType = require('./round_type');
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
-  fields: () => ({
-    songs: {
-      type: new GraphQLList(SongType),
-      resolve() {
-        return Song.find({});
+  fields: {
+    player: {
+      type: PlayerType,
+      args: {
+        id: {
+          type: GraphQLInt
+        }
+      },
+      resolve(parentValue, args) {
+        return axios.get(`https://obscure-brushlands-30729.herokuapp.com/players/${args.id}`).then(resp => resp.data[0]);
       }
     },
-    song: {
-      type: SongType,
-      args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-      resolve(parentValue, { id }) {
-        return Song.findById(id);
+    players: {
+      type: new GraphQLList(PlayerType),
+      resolve(parentValue, args) {
+        return axios.get(`https://obscure-brushlands-30729.herokuapp.com/players/`).then(resp => resp.data);
       }
     },
-    lyric: {
-      type: LyricType,
-      args: { id: { type: new GraphQLNonNull(GraphQLID) } },
-      resolve(parnetValue, { id }) {
-        return Lyric.findById(id);
+    round: {
+      type: RoundType,
+      args: {
+        id: {
+          type: GraphQLInt
+        }
+      },
+      resolve(parentValue, args) {
+        return axios.get(`https://obscure-brushlands-30729.herokuapp.com/rounds/todays/${args.id}`).then(resp => resp.data[0]);
       }
     }
-  })
+  }
 });
 
 module.exports = RootQuery;
