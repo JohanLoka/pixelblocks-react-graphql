@@ -7,3 +7,18 @@ body {
 main {
   flex: 1 0 auto;
 }
+
+.gameWindow {
+  border: none,
+  width: 1080px,
+  height: 720px,
+  overflow: hidden
+}
+
+.jumbotron {
+  padding:25px;
+  margin-top: 30px;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }

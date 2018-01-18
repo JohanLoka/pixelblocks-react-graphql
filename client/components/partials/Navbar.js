@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 class Navbar extends Component {
   render() {
     return (<nav>
-      <div className="nav-wrapper red lighten-1">
+      <div className="nav-wrapper pink">
         <div className="container">
           <a href="#" className="brand-logo">Bloody Pixels</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
@@ -15,7 +15,10 @@ class Navbar extends Component {
               <Link to="/players">Leaderboard</Link>
             </li>
             <li>
-              <Link to="/rounds">Login</Link>
+              <Link to="/rounds">Rounds</Link>
+            </li>
+            <li>
+              <Link to="/maps">Maps</Link>
             </li>
           </ul>
         </div>

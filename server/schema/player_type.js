@@ -25,7 +25,7 @@ const PlayerType = new GraphQLObjectType({
     rounds: {
       type: new GraphQLList(RoundType),
       resolve(parentValue, args) {
-        return axios.get(`https://obscure-brushlands-30729.herokuapp.com/rounds/${parentValue.id}`).then(resp => resp.data);
+        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/rounds/${parentValue.id}`).then(resp => resp.data);
       }
     }
   })

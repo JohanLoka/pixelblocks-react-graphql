@@ -6,12 +6,12 @@ import Header from './partials/Header';
 
 class App extends Component {
   render() {
-    return (<div className="grey darken-4">
+    return (
+      <div>
       <Navbar/>
       <div className="container">
         {this.props.children}
       </div>
-      <Footer/>
     </div>)
   }
 }

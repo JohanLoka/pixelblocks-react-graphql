@@ -2,30 +2,29 @@ const graphql = require('graphql');
 const axios = require('axios');
 
 const {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLInt, GraphQLList} = graphql;
-const PlayerType = require('./player_type');
 
-const RoundType = new GraphQLObjectType({
-  name: 'Round',
+const MapWaveType = new GraphQLObjectType({
+  name: 'MapWave',
   fields: () => ({
     id: {
       type: GraphQLInt
     },
-    score: {
+    score_to_advance: {
+      type: GraphQLString
+    },
+    map_name: {
+      type: GraphQLString
+    },
+    miniboss_count: {
       type: GraphQLInt
     },
-    level: {
-      type: GraphQLString
-    },
-    player_id: {
+    medium_count: {
       type: GraphQLInt
     },
-    ranked: {
-      type: GraphQLString
-    },
-    date: {
-      type: GraphQLString
+    enemy_count: {
+      type: GraphQLInt
     }
   })
 });
 //
-module.exports = RoundType;
+module.exports = MapWaveType;

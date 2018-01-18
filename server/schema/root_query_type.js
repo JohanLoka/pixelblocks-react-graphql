@@ -4,6 +4,9 @@ const axios = require('axios');
 const {GraphQLObjectType,GraphQLList, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLInt} = graphql;
 const PlayerType = require('./player_type');
 const RoundType = require('./round_type');
+const MapWaveType = require('./map_wave_type');
+
+const url = 'https://aqueous-eyrie-89013.herokuapp.com/';
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -16,13 +19,25 @@ const RootQuery = new GraphQLObjectType({
         }
       },
       resolve(parentValue, args) {
-        return axios.get(`https://obscure-brushlands-30729.herokuapp.com/players/${args.id}`).then(resp => resp.data[0]);
+        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/players/${args.id}`).then(resp => resp.data[0]);
+      }
+    },
+    map_waves: {
+      type: new GraphQLList(MapWaveType),
+      resolve(parentValue, args) {
+        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/maps/waves/Ranked_1`).then(resp => resp.data);
       }
     },
     players: {
       type: new GraphQLList(PlayerType),
       resolve(parentValue, args) {
-        return axios.get(`https://obscure-brushlands-30729.herokuapp.com/players/`).then(resp => resp.data);
+        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/players/`).then(resp => resp.data);
+      }
+    },
+    rounds: {
+      type: new GraphQLList(RoundType),
+      resolve(parentValue, args) {
+        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/rounds/5264`).then(resp => resp.data);
       }
     },
     round: {
@@ -33,7 +48,7 @@ const RootQuery = new GraphQLObjectType({
         }
       },
       resolve(parentValue, args) {
-        return axios.get(`https://obscure-brushlands-30729.herokuapp.com/rounds/todays/${args.id}`).then(resp => resp.data[0]);
+        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/rounds/todays/${args.id}`).then(resp => resp.data[0]);
       }
     }
   }
