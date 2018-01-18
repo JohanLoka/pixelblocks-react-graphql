@@ -20,6 +20,9 @@ class Navbar extends Component {
             <li>
               <Link to="/maps">Maps</Link>
             </li>
+            <li>
+              <Link to="/">Events</Link>
+            </li>
           </ul>
         </div>
       </div>

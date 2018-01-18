@@ -4,7 +4,7 @@ const axios = require('axios');
 const {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLInt} = graphql;
 const PlayerType = require('./player_type');
 const RoundType = require('./round_type');
-const MapWaveType = require('./map_wave_type');
+const MapSettingsType = require('./map_wave_type');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -29,11 +29,25 @@ const mutation = new GraphQLObjectType({
         return axios.post(`https://aqueous-eyrie-89013.herokuapp.com/rounds`, args).then(resp => resp.data[0]);
       }
     },
-    editWave: {
-      type: MapWaveType,
+    editMapSettings: {
+      type: MapSettingsType,
       args: {
-        id:  {type:
-          new GraphQLNonNull(GraphQLInt)
+        id: {
+          type: new GraphQLNonNull(GraphQLInt)
+        },
+        enemy_force: {
+          type: GraphQLString
+        }
+      },
+      resolve(parentValue, args) {
+        return axios.patch(`https://aqueous-eyrie-89013.herokuapp.com/maps/settings/${args.id}`, args).then(resp => res.data);
+      }
+    },
+    editWave: {
+      type: MapSettingsType,
+      args: {
+        id: {
+          type: new GraphQLNonNull(GraphQLInt)
         },
         enemy_count: {
           type: GraphQLInt

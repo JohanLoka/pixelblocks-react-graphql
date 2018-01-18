@@ -9,9 +9,18 @@ import MapItem from '../MapItem';
 class MapList extends Component {
 
   renderMaps() {
-    return this.props.data.map_waves.map(wave => {
+    return this.props.data.maps.map(wave => {
       return (<MapItem data={wave} key={wave.id}/>);
     });
+  }
+
+  renderSide() {
+
+    return (<div className="card blue-grey darken-1">
+      <div className="card-content white-text">
+        <h5>Leaderboard</h5>
+      </div>
+    </div>)
   }
 
   render() {
@@ -22,8 +31,13 @@ class MapList extends Component {
     }
 
     return (
-      <div className="jumbotron white-text">
+      <div className="row">
+      <div className="col m6 jumbotron white-text">
           {this.renderMaps()}
+      </div>
+      <div className="col m6 jumbotron white-text">
+          {this.renderSide()}
+      </div>
       </div>
     )
   }

@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import {graphql} from 'react-apollo';
 //Componenets
 import query from '../../querys/fetchRounds';
+import mutation from '../../mutations/addRound';
 
 class RoundForm extends Component {
 
@@ -67,14 +68,5 @@ class RoundForm extends Component {
     )
   }
 }
-
-//Mutation
-const mutation = gql `
-mutation AddRound($id: Int!, $score: Int!, $level: String!){
-  addRound(id: $id, score: $score, level: $level, ranked:"False"){
-    score
-  }
-}
-`;
 
 export default graphql(mutation)(RoundForm);

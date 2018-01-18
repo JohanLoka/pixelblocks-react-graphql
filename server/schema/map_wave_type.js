@@ -3,28 +3,31 @@ const axios = require('axios');
 
 const {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLInt, GraphQLList} = graphql;
 
-const MapWaveType = new GraphQLObjectType({
+const MapSettingsType = new GraphQLObjectType({
   name: 'MapWave',
   fields: () => ({
     id: {
       type: GraphQLInt
     },
-    score_to_advance: {
+    enemy_force: {
       type: GraphQLString
     },
     map_name: {
       type: GraphQLString
     },
-    miniboss_count: {
+    max_crates: {
       type: GraphQLInt
     },
-    medium_count: {
+    reward_badges: {
       type: GraphQLInt
     },
-    enemy_count: {
+    players_tried: {
+      type: GraphQLInt
+    },
+    players_completed: {
       type: GraphQLInt
     }
   })
 });
 //
-module.exports = MapWaveType;
+module.exports = MapSettingsType;

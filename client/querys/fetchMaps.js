@@ -2,10 +2,14 @@ import gql from 'graphql-tag';
 
 export default gql `
 {
-  map_waves {
+  maps {
     id
+    enemy_force
     map_name
-    enemy_count
+    reward_badges
+    max_crates
+    players_tried
+    players_completed
   }
 }
 `;

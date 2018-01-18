@@ -1,10 +1,18 @@
 const graphql = require('graphql');
 const axios = require('axios');
 
-const {GraphQLObjectType,GraphQLList, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLInt} = graphql;
+const {
+  GraphQLObjectType,
+  GraphQLList,
+  GraphQLString,
+  GraphQLID,
+  GraphQLNonNull,
+  GraphQLInt
+} = graphql;
+
 const PlayerType = require('./player_type');
 const RoundType = require('./round_type');
-const MapWaveType = require('./map_wave_type');
+const MapSettingsType = require('./map_wave_type');
 
 const url = 'https://aqueous-eyrie-89013.herokuapp.com/';
 
@@ -23,9 +31,15 @@ const RootQuery = new GraphQLObjectType({
       }
     },
     map_waves: {
-      type: new GraphQLList(MapWaveType),
+      type: new GraphQLList(MapSettingsType),
       resolve(parentValue, args) {
         return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/maps/waves/Ranked_1`).then(resp => resp.data);
+      }
+    },
+    maps: {
+      type: new GraphQLList(MapSettingsType),
+      resolve(parentValue, args) {
+        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/maps/`).then(resp => resp.data);
       }
     },
     players: {
@@ -37,7 +51,7 @@ const RootQuery = new GraphQLObjectType({
     rounds: {
       type: new GraphQLList(RoundType),
       resolve(parentValue, args) {
-        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/rounds/5264`).then(resp => resp.data);
+        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/rounds/`).then(resp => resp.data);
       }
     },
     round: {
