@@ -37,7 +37,7 @@ class PlayerList extends Component {
     }
 
     return (<div className="row">
-      <div className="col m6 jumbotron">
+      <div className="col m12 jumbotron">
 
         <table className="highlight">
         <thead>
@@ -49,12 +49,6 @@ class PlayerList extends Component {
             {this.renderPlayers()}
           </tbody>
         </table>
-
-      </div>
-      <div className="col m6 jumbotron white-text">
-        {this.renderSide()}
-        {this.renderSide_lower()}
-
       </div>
     </div>)
   }

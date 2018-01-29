@@ -4,6 +4,8 @@ import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import ApolloClient from 'apollo-client';
 import {ApolloProvider} from 'react-apollo';
 
+import './resources/css/styling.css';
+import './resources/css/custom.css';
 //Components
 import PlayerList from './components/pages/PlayerList';
 import MapList from './components/pages/MapList';
