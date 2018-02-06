@@ -39,7 +39,7 @@ class PlayerList extends Component {
     return (<div className="row">
       <div className="col m12 jumbotron">
 
-        <table className="highlight responsive-table striped centered">
+        <table className="highlight responsive-table striped">
         <thead>
         <th>Name</th>
         <th>Score</th>
