@@ -54,7 +54,7 @@ class StartPage extends Component {
       <div className="row spacing-t center-align">
 
         <div className="col m6 center-align">
-        <h5>Daily Champions</h5>
+          <h5>Top 5 Alltime</h5>
         <Leaderboard path="/rounds/toplist" />
         </div>
 
