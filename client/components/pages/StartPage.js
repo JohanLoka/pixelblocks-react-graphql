@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+
 import PlayerList from './PlayerList';
+import Leaderboard from '../leaderboard/Leaderboard';
 
 class StartPage extends Component {
 
@@ -49,6 +51,20 @@ class StartPage extends Component {
           {this.renderGame()}
         </div>
       </div>
+      <div className="row spacing-t center-align">
+
+        <div className="col m6 center-align">
+        <h5>Daily Champions</h5>
+        <Leaderboard path="/rounds/toplist" />
+        </div>
+
+        <div className="col m6 center-align">
+          <h5>Top 5 Today</h5>
+        <Leaderboard path="/rounds/toplist/today" />
+        </div>
+
+      </div>
+
     </div>)
   }
 
