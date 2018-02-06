@@ -24,7 +24,7 @@ class Leaderboard extends Component {
   }
   render() {
     return (
-        <table className="striped">
+        <table className="striped responsive-table centered">
         <tbody>
         {this.renderItems()}
         </tbody>
