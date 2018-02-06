@@ -40,7 +40,7 @@ class RoundList extends Component {
     return (<div className="row">
       <div className="col m6 jumbotron">
 
-        <table className="highlight">
+        <table className="highlight responsive-table striped">
           <thead>
             <th>Name</th>
             <th>Player</th>

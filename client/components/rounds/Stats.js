@@ -38,26 +38,26 @@ class Stats extends Component {
     return (
       <div className="card blue-grey darken-1">
         <div className="card-content white-text">
-        <table className="bordered">
-        <tbody>
-        <tr>
-        <td>Games played</td>
-        <td>{this.props.rounds.length}</td>
-        </tr>
-        <tr>
-        <td>Total score</td>
-        <td>{this.state.total}</td>
-        </tr>
-        <tr>
-        <td>Best score</td>
-        <td>{this.state.best}</td>
-        </tr>
-        <tr>
-        <td>Average score</td>
-        <td>{this.state.average.toFixed(2)}</td>
-        </tr>
-        </tbody>
-        </table>
+          <table className="bordered responsive-table">
+            <tbody>
+              <tr>
+                <td>Games played</td>
+                <td>{this.props.rounds.length}</td>
+              </tr>
+              <tr>
+                <td>Total score</td>
+                <td>{this.state.total}</td>
+              </tr>
+              <tr>
+                <td>Best score</td>
+                <td>{this.state.best}</td>
+              </tr>
+              <tr>
+                <td>Average score</td>
+                <td>{this.state.average.toFixed(2)}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     )

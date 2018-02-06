@@ -39,7 +39,7 @@ class StartPage extends Component {
       <div className="bg">
         <div className="container">
           <div className="caption">
-            <span className="border">Pixelblocks</span><br/><br/>
+            <span className="border">Bloody Pixels</span><br/><br/>
             <br/>
             <span className="border display-5">2D Bullet Hell</span>
           </div>
