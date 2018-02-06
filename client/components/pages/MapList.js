@@ -16,28 +16,30 @@ class MapList extends Component {
 
   renderSide() {
 
-    return (<div className="card blue-grey darken-1">
-      <div className="card-content white-text">
-        <h5>Leaderboard</h5>
+    return (
+      <div className="card blue-grey darken-1">
+        <div className="card-content white-text">
+          <h5 className="red-text">(Wave Settings TBA)</h5>
+        </div>
       </div>
-    </div>)
+    )
   }
 
   render() {
     if (this.props.data.loading) {
       return (
-        <h4 className="black-text">Loading maps... <i className="material-icons">apps</i></h4>
+        <h4 className="black-text">Loading maps...</h4>
       );
     }
 
     return (
       <div className="row">
-      <div className="col m6 jumbotron white-text">
+        <div className="col m6 jumbotron white-text">
           {this.renderMaps()}
-      </div>
-      <div className="col m6 jumbotron white-text">
+        </div>
+        <div className="col m6 jumbotron white-text">
           {this.renderSide()}
-      </div>
+        </div>
       </div>
     )
   }

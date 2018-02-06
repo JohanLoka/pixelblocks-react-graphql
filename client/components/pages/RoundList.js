@@ -33,31 +33,33 @@ class RoundList extends Component {
 
   render() {
     if (this.props.data.loading) {
-      return (<h4 className="black-text">Loading rounds...
-        <i className="material-icons">apps</i>
-      </h4>);
+      return (
+        <h4 className="black-text">Loading rounds...</h4>
+      );
     }
-    return (<div className="row">
-      <div className="col m6 jumbotron">
+    return (
+      <div className="row">
+        <div className="col m6 jumbotron">
 
-        <table className="highlight responsive-table striped">
-          <thead>
-            <th>Name</th>
-            <th>Player</th>
-            <th>Score</th>
-            <th>Date</th>
-          </thead>
-          <tbody>
-            {this.renderRounds()}
-          </tbody>
-        </table>
+          <table className="highlight responsive-table striped">
+            <thead>
+              <th>Name</th>
+              <th>Player</th>
+              <th>Score</th>
+              <th>Date</th>
+            </thead>
+            <tbody>
+              {this.renderRounds()}
+            </tbody>
+          </table>
 
+        </div>
+        <div className="col m6 jumbotron white-text">
+          {this.renderForm()}
+          <Stats rounds={this.props.data.rounds}/>
+        </div>
       </div>
-      <div className="col m6 jumbotron white-text">
-        {this.renderForm()}
-        <Stats rounds={this.props.data.rounds}/>
-      </div>
-    </div>)
+    )
   }
 }
 

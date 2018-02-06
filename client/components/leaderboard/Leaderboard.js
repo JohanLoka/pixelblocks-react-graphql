@@ -16,7 +16,7 @@ class Leaderboard extends Component {
 }
 
   renderItems() {
-    if(this.state.items.length < 1) return;
+    if(this.state.items.length < 1) return (<p className="red-text">No Games Played</p>);
     let items = this.state.items.slice(0,5).map(item => {
       return (<LeaderboardItem data={item} />);
     });
