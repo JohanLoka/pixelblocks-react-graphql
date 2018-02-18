@@ -11,11 +11,12 @@ class Leaderboard extends Component {
       items: []
     };
 
+    //Om det är den dagliga tabellen, uppdatera varje 30 sekund.
     if (this.props.path === "/rounds/toplist/today")
       setInterval(this.getList.bind(this), 30000);
-    else
-      this.getList();
-    }
+
+    this.getList();
+  }
 
   getList() {
     axios.get('https://aqueous-eyrie-89013.herokuapp.com' + this.props.path).then(resp => this.setState({items: resp.data}));
