@@ -65,7 +65,7 @@ class StartPage extends Component {
 
           <div className="col m6 center-align">
             <h5>Top 5 Today</h5>
-            <Leaderboard path="/rounds/toplist/today"/>
+            <Leaderboard path="/rounds/toplist/today" />
           </div>
 
         </div>
