@@ -13,9 +13,13 @@ class Leaderboard extends Component {
 
     //Om det är den dagliga tabellen, uppdatera varje 30 sekund.
     if (this.props.path === "/rounds/toplist/today")
-      setInterval(this.getList.bind(this), 30000);
+      this.timedFetch = setInterval(this.getList.bind(this), 30000);
 
     this.getList();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timedFetch);
   }
 
   getList() {
@@ -24,18 +28,23 @@ class Leaderboard extends Component {
 
   renderItems() {
     if (this.state.items.length < 1)
-      return (<p className="red-text">No Games Played</p>);
+      return (
+        <p className="red-text">No Games Played</p>
+      );
+
     let items = this.state.items.slice(0, 5).map(item => {
-      return (<LeaderboardItem data={item}/>);
+      return (<LeaderboardItem key={item.id} data={item}/>);
     });
     return items;
   }
   render() {
-    return (<table className="striped responsive-table centered">
-      <tbody>
-        {this.renderItems()}
-      </tbody>
-    </table>)
+    return (
+      <table className="striped responsive-table centered">
+        <tbody>
+          {this.renderItems()}
+        </tbody>
+      </table>
+    )
   }
 }
 
