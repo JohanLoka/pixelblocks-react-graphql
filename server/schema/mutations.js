@@ -4,7 +4,8 @@ const axios = require('axios');
 const {GraphQLObjectType, GraphQLString, GraphQLID, GraphQLNonNull, GraphQLInt} = graphql;
 const PlayerType = require('./player_type');
 const RoundType = require('./round_type');
-const MapSettingsType = require('./map_wave_type');
+const MapSettingsType = require('./map_settings_type');
+const MapWavesType = require('./map_waves_type');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -40,21 +41,33 @@ const mutation = new GraphQLObjectType({
         }
       },
       resolve(parentValue, args) {
-        return axios.patch(`https://aqueous-eyrie-89013.herokuapp.com/maps/settings/${args.id}`, args).then(resp => res.data);
+        return axios.patch(`https://aqueous-eyrie-89013.herokuapp.com/maps/settings/${args.id}`, args).then(resp => resp.data);
       }
     },
-    editWave: {
-      type: MapSettingsType,
+    editMapWaves: {
+      type: MapWavesType,
       args: {
         id: {
           type: new GraphQLNonNull(GraphQLInt)
         },
+        score_to_advance: {
+          type: GraphQLString
+        },
         enemy_count: {
-          type: GraphQLInt
+          type: GraphQLString
+        },
+        medium_count: {
+          type: GraphQLString
+        },
+        miniboss_count: {
+          type: GraphQLString
+        },
+        boss_count: {
+          type: GraphQLString
         }
       },
       resolve(parentValue, args) {
-        return axios.patch(`https://aqueous-eyrie-89013.herokuapp.com/maps/waves/${args.id}`, args).then(resp => res.data);
+        return axios.patch(`https://aqueous-eyrie-89013.herokuapp.com/maps/waves/${args.id}`, args).then(resp => resp.data);
       }
     }
   }

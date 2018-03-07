@@ -9,6 +9,7 @@ import './resources/css/custom.css';
 //Components
 import PlayerList from './components/pages/PlayerList';
 import MapList from './components/pages/MapList';
+import WaveList from './components/pages/WaveList';
 import RoundList from './components/pages/RoundList';
 import StartPage from './components/pages/StartPage';
 import App from './components/App';
@@ -23,6 +24,7 @@ const Root = () => {
           <IndexRoute component={StartPage}/>
           <Route path="/players" component={PlayerList}/>
           <Route path="/maps" component={MapList}/>
+          <Route path="/waves" component={WaveList}/>
           <Route path="/rounds" component={RoundList}/>
         </Route>
       </Router>

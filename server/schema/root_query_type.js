@@ -12,7 +12,8 @@ const {
 
 const PlayerType = require('./player_type');
 const RoundType = require('./round_type');
-const MapSettingsType = require('./map_wave_type');
+const MapSettingsType = require('./map_settings_type');
+const MapWavesType = require('./map_waves_type');
 
 const url = 'https://aqueous-eyrie-89013.herokuapp.com/';
 
@@ -30,10 +31,10 @@ const RootQuery = new GraphQLObjectType({
         return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/players/${args.id}`).then(resp => resp.data[0]);
       }
     },
-    map_waves: {
-      type: new GraphQLList(MapSettingsType),
+    waves: {
+      type: new GraphQLList(MapWavesType),
       resolve(parentValue, args) {
-        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/maps/waves/Ranked_1`).then(resp => resp.data);
+        return axios.get(`https://aqueous-eyrie-89013.herokuapp.com/maps/waves`).then(resp => resp.data);
       }
     },
     maps: {
