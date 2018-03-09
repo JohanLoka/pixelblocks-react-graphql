@@ -5,6 +5,7 @@ import {graphql} from 'react-apollo';
 //Components
 import query from '../../querys/fetchMaps';
 import MapItem from '../MapItem';
+import AdminNavbar from '../partials/admin_navbar';
 
 class MapList extends Component {
 
@@ -34,6 +35,7 @@ class MapList extends Component {
 
     return (
       <div className="row">
+      <AdminNavbar />
         <div className="col m6 jumbotron white-text">
           {this.renderMaps()}
         </div>

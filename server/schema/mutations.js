@@ -69,6 +69,17 @@ const mutation = new GraphQLObjectType({
       resolve(parentValue, args) {
         return axios.patch(`https://aqueous-eyrie-89013.herokuapp.com/maps/waves/${args.id}`, args).then(resp => resp.data);
       }
+    },
+    addWave: {
+      type: MapWavesType,
+      args: {
+        map_name: {
+          type: new GraphQLNonNull(GraphQLString)
+        }
+      },
+      resolve(parentValue, args) {
+        return axios.post(`https://aqueous-eyrie-89013.herokuapp.com/maps/waves`, args).then(resp => resp.data);
+      }
     }
   }
 });

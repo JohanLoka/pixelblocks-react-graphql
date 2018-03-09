@@ -6,6 +6,7 @@ import {graphql} from 'react-apollo';
 import RoundItem from '../RoundItem';
 import RoundForm from '../rounds/RoundForm';
 import Stats from '../rounds/Stats';
+import AdminNavbar from '../partials/admin_navbar';
 
 import query from '../../querys/fetchRounds';
 
@@ -39,6 +40,7 @@ class RoundList extends Component {
     }
     return (
       <div className="row">
+      <AdminNavbar />
         <div className="col m6 jumbotron">
 
           <table className="highlight responsive-table striped">
