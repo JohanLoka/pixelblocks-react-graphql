@@ -11,6 +11,7 @@ import PlayerList from './components/pages/PlayerList';
 import MapList from './components/pages/MapList';
 import WaveList from './components/pages/WaveList';
 import RoundList from './components/pages/RoundList';
+import LiveData from './components/pages/LiveData';
 import StartPage from './components/pages/StartPage';
 import App from './components/App';
 
@@ -26,6 +27,7 @@ const Root = () => {
           <Route path="/maps" component={MapList}/>
           <Route path="/waves" component={WaveList}/>
           <Route path="/rounds" component={RoundList}/>
+          <Route path="/live" component={LiveData}/>
         </Route>
       </Router>
     </ApolloProvider>
