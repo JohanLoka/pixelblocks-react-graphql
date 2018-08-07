@@ -62,9 +62,7 @@ export default class LeaderboardNav extends React.Component {
     return (
       <div className="row spacing-t center-align">
         <div className="row">
-          {this.navbar()}
           {this.ranked()}
-          {this.dungeon()}
         </div>
       </div>
     );
